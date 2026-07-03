@@ -1,0 +1,6 @@
+.git
+.agents
+.vscode
+Dockerfile
+.dockerignore
+*.log
