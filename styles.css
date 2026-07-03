@@ -44,9 +44,9 @@ a {
 
 .topbar {
   position: sticky;
-  top: 1rem;
+  top: 0;
   z-index: 20;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   width: 100%;
   padding-inline: 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
@@ -105,6 +105,22 @@ a {
 .nav a:hover,
 .nav a:focus-visible {
   color: var(--text);
+}
+
+.nav a.is-active {
+  color: var(--text);
+  position: relative;
+}
+
+.nav a.is-active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.45rem;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
 }
 
 .nav-toggle {
@@ -465,7 +481,7 @@ h1 {
   }
 
   .topbar {
-    top: 0.6rem;
+    top: 0;
   }
 
   .topbar__inner {

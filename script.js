@@ -1,6 +1,22 @@
 const navToggle = document.querySelector(".nav-toggle");
 const nav = document.querySelector(".nav");
 const lottieTarget = document.getElementById("lottie-animation");
+const navLinks = nav ? Array.from(nav.querySelectorAll("a")) : [];
+const sections = navLinks
+  .map((link) => document.querySelector(link.getAttribute("href")))
+  .filter(Boolean);
+
+const setActiveLink = (activeId) => {
+  navLinks.forEach((link) => {
+    const isActive = link.getAttribute("href") === `#${activeId}`;
+    link.classList.toggle("is-active", isActive);
+    if (isActive) {
+      link.setAttribute("aria-current", "page");
+    } else {
+      link.removeAttribute("aria-current");
+    }
+  });
+};
 
 if (navToggle && nav) {
   navToggle.addEventListener("click", () => {
@@ -14,6 +30,29 @@ if (navToggle && nav) {
       navToggle.setAttribute("aria-expanded", "false");
     });
   });
+}
+
+if (sections.length) {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const visibleSections = entries.filter((entry) => entry.isIntersecting);
+      if (!visibleSections.length) {
+        return;
+      }
+
+      visibleSections.sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+      setActiveLink(visibleSections[0].target.id);
+    },
+    {
+      root: null,
+      threshold: [0.25, 0.4, 0.6],
+      rootMargin: "-20% 0px -55% 0px",
+    }
+  );
+
+  sections.forEach((section) => observer.observe(section));
+
+  setActiveLink(sections[0].id);
 }
 
 if (window.lottie && lottieTarget) {
