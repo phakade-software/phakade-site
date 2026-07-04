@@ -1,13 +1,13 @@
 :root {
-  --bg: #0b0f14;
-  --surface: rgba(19, 24, 32, 0.8);
-  --surface-solid: #131820;
-  --border: rgba(42, 49, 64, 0.85);
-  --accent: #3b82f6;
-  --accent-2: #22d3ee;
-  --text: #e6eaf0;
-  --muted: #8b96a5;
-  --shadow: 0 24px 80px rgba(0, 0, 0, 0.36);
+  --bg: #f7fbff;
+  --surface: rgba(255, 255, 255, 0.92);
+  --surface-solid: #ffffff;
+  --border: rgba(37, 99, 235, 0.14);
+  --accent: #2563eb;
+  --accent-2: #60a5fa;
+  --text: #10233f;
+  --muted: #5f718d;
+  --shadow: 0 18px 45px rgba(37, 99, 235, 0.12);
   --container: 1180px;
 }
 
@@ -24,7 +24,10 @@ body {
   color: var(--text);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
-  background: #0b0f14;
+  background:
+    radial-gradient(circle at top left, rgba(37, 99, 235, 0.12), transparent 26%),
+    radial-gradient(circle at top right, rgba(96, 165, 250, 0.16), transparent 24%),
+    var(--bg);
   min-height: 100vh;
 }
 
@@ -46,10 +49,10 @@ a {
   margin-bottom: 1.5rem;
   width: 100%;
   padding-inline: 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  background: rgba(19, 24, 32, 0.88);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
 }
 
 .topbar__inner {
@@ -73,8 +76,8 @@ a {
   height: 2.7rem;
   border-radius: 0.8rem;
   object-fit: cover;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.18);
+  border: 1px solid rgba(37, 99, 235, 0.12);
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.14);
 }
 
 .brand__text {
@@ -101,19 +104,19 @@ a {
 
 .nav a:hover,
 .nav a:focus-visible {
-  color: var(--text);
+  color: var(--accent);
 }
 
 .nav a.is-active {
-  color: var(--text);
+  color: var(--accent);
 }
 
 .nav-toggle {
   display: none;
   width: 2.9rem;
   height: 2.9rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  background: rgba(37, 99, 235, 0.04);
   border-radius: 0.9rem;
   align-items: center;
   justify-content: center;
@@ -126,7 +129,7 @@ a {
   width: 1.15rem;
   height: 2px;
   border-radius: 99px;
-  background: var(--text);
+  background: var(--accent);
 }
 
 .sr-only {
@@ -160,15 +163,16 @@ a {
 }
 
 .button--primary {
-  color: #071018;
-  background: #cfe2ff;
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.2);
 }
 
 .button--secondary,
 .button--ghost {
-  color: var(--text);
-  background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(255, 255, 255, 0.09);
+  color: var(--accent);
+  background: rgba(255, 255, 255, 0.9);
+  border-color: var(--border);
 }
 
 main {
@@ -192,7 +196,7 @@ main {
 
 .eyebrow {
   margin: 0 0 0.9rem;
-  color: var(--accent-2);
+  color: var(--accent);
   text-transform: uppercase;
   letter-spacing: 0.16em;
   font-size: 0.78rem;
@@ -240,9 +244,9 @@ h1 {
 
 .hero__stats li {
   padding: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border);
   border-radius: 1rem;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.86);
 }
 
 .hero__stats strong,
@@ -275,7 +279,7 @@ h1 {
   inset: -35% auto auto -35%;
   width: 14rem;
   height: 14rem;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.1), transparent 68%);
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.16), transparent 68%);
   pointer-events: none;
 }
 
@@ -285,10 +289,10 @@ h1 {
   left: 1rem;
   z-index: 1;
   padding: 0.45rem 0.75rem;
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  border: 1px solid var(--border);
   border-radius: 999px;
-  background: rgba(11, 15, 20, 0.6);
-  color: var(--muted);
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--accent);
   font-size: 0.82rem;
 }
 
@@ -341,8 +345,8 @@ h1 {
   padding: 1.25rem;
   border-radius: 1.25rem;
   background: var(--surface);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
 }
 
 .card__tag {
@@ -350,10 +354,10 @@ h1 {
   margin-bottom: 0.9rem;
   padding: 0.38rem 0.65rem;
   border-radius: 999px;
-  background: rgba(59, 130, 246, 0.1);
-  color: #c7ddff;
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--accent);
   font-size: 0.8rem;
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  border: 1px solid rgba(37, 99, 235, 0.16);
 }
 
 .card--compact {
@@ -371,8 +375,8 @@ h1 {
   gap: 1rem;
   padding: 1.1rem 1.15rem;
   border-radius: 1.1rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid var(--border);
 }
 
 .feature-row__index {
@@ -381,9 +385,9 @@ h1 {
   display: grid;
   place-items: center;
   border-radius: 0.9rem;
-  color: #dffbff;
-  background: rgba(59, 130, 246, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  border: 1px solid rgba(37, 99, 235, 0.12);
   font-size: 0.82rem;
   font-weight: 700;
 }
@@ -393,8 +397,8 @@ h1 {
   align-items: center;
   padding: 1.5rem;
   border-radius: 1.4rem;
-  background: rgba(19, 24, 32, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--border);
 }
 
 @media (max-width: 980px) {
@@ -416,8 +420,8 @@ h1 {
     gap: 0.4rem;
     padding: 0.75rem;
     border-radius: 1rem;
-    background: rgba(19, 24, 32, 0.96);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.98);
+    border: 1px solid var(--border);
     box-shadow: var(--shadow);
     opacity: 0;
     pointer-events: none;
@@ -434,7 +438,7 @@ h1 {
   .nav a {
     padding: 0.8rem 0.85rem;
     border-radius: 0.8rem;
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(37, 99, 235, 0.04);
   }
 
   .topbar__inner {
