@@ -11,7 +11,8 @@ env:
   IMAGE_NAME: phakade-site
   CONTAINER_NAME: phakade-site
   REMOTE_PATH: /opt/phakade-site
-  HOST_PORT: "80"
+  HTTP_PORT: "80"
+  HTTPS_PORT: "443"
 
 permissions:
   contents: read
@@ -65,6 +66,7 @@ jobs:
             --restart unless-stopped \
             --memory="300m" \
             --memory-swap="500m" \
-            -p ${HOST_PORT}:80 \
+            -p ${HTTP_PORT}:80 \
+            -p ${HTTPS_PORT}:443 \
             "${REGISTRY}/${OWNER_LC}/${IMAGE_NAME}:latest"
           EOF
