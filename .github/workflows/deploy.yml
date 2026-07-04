@@ -63,6 +63,8 @@ jobs:
           docker run -d \
             --name "${CONTAINER_NAME}" \
             --restart unless-stopped \
+            --memory="300m" \
+            --memory-swap="500m" \
             -p ${HOST_PORT}:80 \
             "${REGISTRY}/${OWNER_LC}/${IMAGE_NAME}:latest"
           EOF
