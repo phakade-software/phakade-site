@@ -1,6 +1,6 @@
+document.documentElement.classList.add("js");
 const navToggle = document.querySelector(".nav-toggle");
 const nav = document.querySelector(".nav");
-const lottieTarget = document.getElementById("lottie-animation");
 const navLinks = nav ? Array.from(nav.querySelectorAll("a")) : [];
 const sections = navLinks
   .map((link) => document.querySelector(link.getAttribute("href")))
@@ -55,34 +55,25 @@ if (sections.length) {
   setActiveLink(sections[0].id);
 }
 
-if (window.lottie && lottieTarget) {
-  fetch(encodeURI("code dark.json"))
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`Failed to load animation: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then((animationData) => {
-      window.lottie.loadAnimation({
-        container: lottieTarget,
-        renderer: "svg",
-        loop: true,
-        autoplay: true,
-        animationData,
-        rendererSettings: {
-          preserveAspectRatio: "xMidYMid meet",
-        },
-      });
-    })
-    .catch(() => {
-      lottieTarget.innerHTML = `
-        <div style="height:100%;display:grid;place-items:center;color:#8b96a5;text-align:center;padding:1.5rem;">
-          <div>
-            <strong style="display:block;color:#e6eaf0;margin-bottom:0.4rem;">Animation unavailable</strong>
-            <span>Check that <code>code dark.json</code> is served from the same folder.</span>
-          </div>
-        </div>
-      `;
+const revealElements = document.querySelectorAll(".reveal");
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+if (!("IntersectionObserver" in window) || reducedMotion) {
+  revealElements.forEach((element) => element.classList.add("is-visible"));
+} else {
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-visible");
+      observer.unobserve(entry.target);
     });
+  }, { threshold: 0.14, rootMargin: "0px 0px -40px" });
+  revealElements.forEach((element) => revealObserver.observe(element));
 }
+
+document.querySelector("[data-year]").textContent = new Date().getFullYear();
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && nav) {
+    nav.classList.remove("is-open");
+    navToggle?.setAttribute("aria-expanded", "false");
+  }
+});

@@ -12,8 +12,8 @@
     <meta property="og:title" content="Phakade" />
     <title>Phakade</title>
     <link rel="icon" href="favicon.ico" />
+    <link rel="preload" href="assets/images/hourglass.jpg" as="image" fetchpriority="high" />
     <link rel="stylesheet" href="styles.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js" defer></script>
     <script src="script.js" defer></script>
   </head>
   <body>
@@ -34,6 +34,7 @@
         </button>
 
         <nav id="site-nav" class="nav">
+          <a href="#home">Home</a>
           <a href="#services">Services</a>
           <a href="#work">Work</a>
           <a href="#process">Process</a>
@@ -45,7 +46,8 @@
     <div class="page-shell">
       <main id="home">
         <section class="hero">
-          <div class="hero__copy">
+          <div class="hero__copy reveal">
+            <p class="eyebrow">Software built to endure</p>
             <h1>We build long-lasting digital solutions that are fast, stable, and ready to grow.</h1>
             <p class="lede">
               Phakade means everlasting, and we build with that standard in mind. We help teams
@@ -74,60 +76,68 @@
             </ul>
           </div>
 
-          <div class="hero__visual">
+          <div class="hero__visual reveal">
             <div class="visual-card">
-              <div id="lottie-animation" class="lottie-stage" aria-label="Animated software illustration"></div>
+              <img class="hero__image" src="assets/images/hourglass.jpg"
+                alt="Sand flowing through a glass hourglass against a dark background"
+                width="1200" height="1693" fetchpriority="high" />
+              <div class="visual-card__badge" aria-hidden="true"><span>Made for today.</span><strong>Built for tomorrow.</strong></div>
             </div>
           </div>
         </section>
 
         <section id="services" class="section">
-          <div class="section__heading">
+          <div class="section__heading reveal">
             <p class="eyebrow">What we build</p>
             <h2>End-to-end delivery for modern software products.</h2>
           </div>
 
           <div class="grid grid--three">
-            <article class="card">
+            <article class="card reveal">
               <span class="card__tag">SaaS platforms</span>
               <h3>Subscription products</h3>
               <p>Build secure multi-tenant systems, dashboards, billing flows, and admin tools.</p>
             </article>
-            <article class="card">
+            <article class="card reveal">
               <span class="card__tag">Web apps</span>
               <h3>Fast browser experiences</h3>
               <p>Ship marketing sites, portals, and business apps that feel clean and responsive.</p>
             </article>
-            <article class="card">
+            <article class="card reveal">
               <span class="card__tag">Mobile apps</span>
               <h3>iOS and Android products</h3>
               <p>Develop app experiences that are stable, maintainable, and production-ready.</p>
+            </article>
+            <article class="card reveal">
+              <span class="card__tag">APIs &amp; cloud</span>
+              <h3>Connected, scalable systems</h3>
+              <p>Build dependable APIs, integrations, and cloud foundations that grow cleanly.</p>
             </article>
           </div>
         </section>
 
         <section id="work" class="section section--split">
-          <div class="section__heading">
+          <div class="section__heading reveal">
             <p class="eyebrow">Why clients choose us</p>
             <h2>Competitive rates, software of production grade.</h2>
           </div>
 
           <div class="stack">
-            <div class="feature-row">
+            <div class="feature-row reveal">
               <span class="feature-row__index">01</span>
               <div>
                 <h3>Clarity before code</h3>
                 <p>We define scope, priorities, and success metrics before the first build sprint.</p>
               </div>
             </div>
-            <div class="feature-row">
+            <div class="feature-row reveal">
               <span class="feature-row__index">02</span>
               <div>
                 <h3>Engineering that feels intentional</h3>
                 <p>Systems are built to be maintainable, testable, and easy to extend.</p>
               </div>
             </div>
-            <div class="feature-row">
+            <div class="feature-row reveal">
               <span class="feature-row__index">03</span>
               <div>
                 <h3>Systems that scale</h3>
@@ -138,39 +148,45 @@
         </section>
 
         <section id="process" class="section">
-          <div class="section__heading">
+          <div class="section__heading reveal">
             <p class="eyebrow">How we work</p>
             <h2>A simple delivery flow that keeps momentum high.</h2>
           </div>
 
           <div class="grid grid--four">
-            <article class="card card--compact">
-              <h3>Discover</h3>
+            <article class="card card--compact reveal">
+              <span class="process-number">01</span><h3>Discover</h3>
               <p>Understand the business, users, and product goals.</p>
             </article>
-            <article class="card card--compact">
-              <h3>Define</h3>
+            <article class="card card--compact reveal">
+              <span class="process-number">02</span><h3>Define</h3>
               <p>Shape scope, architecture, and delivery priorities.</p>
             </article>
-            <article class="card card--compact">
-              <h3>Build</h3>
+            <article class="card card--compact reveal">
+              <span class="process-number">03</span><h3>Build</h3>
               <p>Develop the frontend, backend, and integrations in small iterations.</p>
             </article>
-            <article class="card card--compact">
-              <h3>Launch</h3>
+            <article class="card card--compact reveal">
+              <span class="process-number">04</span><h3>Launch</h3>
               <p>Test, polish, deploy, and support the first version in production.</p>
             </article>
           </div>
         </section>
 
-        <section id="contact" class="section section--cta">
+        <section id="contact" class="section section--cta reveal">
           <div>
             <p class="eyebrow">Ready to build?</p>
             <h2>Let’s turn your product idea into something people can use.</h2>
           </div>
-          <a class="button button--primary" href="mailto:info@phakade.net">info@phakade.net</a>
+          <a class="button button--light" href="mailto:info@phakade.net">info@phakade.net <span aria-hidden="true">→</span></a>
         </section>
       </main>
     </div>
+    <footer class="footer">
+      <div class="footer__inner">
+        <p>© <span data-year></span> Phakade Software. Built to endure.</p>
+        <a href="#home">Back to top <span aria-hidden="true">↑</span></a>
+      </div>
+    </footer>
   </body>
 </html>
