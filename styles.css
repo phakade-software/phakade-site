@@ -399,6 +399,9 @@ h1 {
 
 .section--cta .eyebrow, .section--cta h2 { color: #fff; }
 .button--light { color: var(--accent); background: #fff; border-color: #fff; }
+.contact-details { display: grid; justify-items: start; gap: .8rem; }
+.contact-details > a:not(.button), .contact-details > span { color: #fff; font-weight: 600; }
+.contact-details > a:not(.button):hover { text-decoration: underline; }
 .footer { border-top: 1px solid var(--border); background: #fff; }
 .footer__inner { display: flex; justify-content: space-between; width: min(var(--container), calc(100% - 3rem)); margin: auto; padding: 2.25rem 0; }
 .footer p { margin: 0; color: var(--muted); }
