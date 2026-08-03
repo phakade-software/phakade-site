@@ -1,6 +1,7 @@
 document.documentElement.classList.add("js");
 const navToggle = document.querySelector(".nav-toggle");
 const nav = document.querySelector(".nav");
+const backToTopButton = document.querySelector(".back-to-top");
 const navLinks = nav ? Array.from(nav.querySelectorAll("a")) : [];
 const sections = navLinks
   .map((link) => document.querySelector(link.getAttribute("href")))
@@ -71,6 +72,14 @@ if (!("IntersectionObserver" in window) || reducedMotion) {
 }
 
 document.querySelector("[data-year]").textContent = new Date().getFullYear();
+
+const updateBackToTopVisibility = () => {
+  backToTopButton?.classList.toggle("is-visible", window.scrollY > 240);
+};
+
+updateBackToTopVisibility();
+window.addEventListener("scroll", updateBackToTopVisibility, { passive: true });
+
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && nav) {
     nav.classList.remove("is-open");

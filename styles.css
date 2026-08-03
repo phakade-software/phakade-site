@@ -402,7 +402,29 @@ h1 {
 .footer { border-top: 1px solid var(--border); background: #fff; }
 .footer__inner { display: flex; justify-content: space-between; width: min(var(--container), calc(100% - 3rem)); margin: auto; padding: 2.25rem 0; }
 .footer p { margin: 0; color: var(--muted); }
-.footer a { color: var(--accent); font-weight: 700; }
+.back-to-top {
+  position: fixed;
+  z-index: 30;
+  right: clamp(1rem, 3vw, 2rem);
+  bottom: clamp(1rem, 3vw, 2rem);
+  display: grid;
+  width: 3.25rem;
+  height: 3.25rem;
+  place-items: center;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  color: #fff;
+  background: var(--accent);
+  box-shadow: 0 12px 28px rgba(16, 35, 63, 0.2);
+  font-size: 1.35rem;
+  font-weight: 800;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(0.75rem);
+  transition: opacity 180ms ease, transform 180ms ease, background 180ms ease;
+}
+.back-to-top.is-visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.back-to-top:hover { background: #17212b; }
 .js .reveal { opacity: 0; transform: translateY(22px); transition: opacity 650ms ease, transform 650ms ease; }
 .js .reveal.is-visible { opacity: 1; transform: none; }
 .grid .reveal:nth-child(2) { transition-delay: 70ms; }
