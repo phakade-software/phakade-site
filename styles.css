@@ -481,21 +481,6 @@ h1 {
   gap: 0.9rem;
 }
 
-.project-showcase {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  padding: clamp(1.35rem, 3vw, 2rem);
-  border: 1px solid var(--accent);
-  border-radius: 1.25rem;
-  background: linear-gradient(120deg, rgba(8, 124, 172, 0.1), rgba(255, 255, 255, 0.9));
-}
-
-.project-showcase .eyebrow { margin-bottom: 0.55rem; }
-.project-showcase h3 { margin-bottom: 0.35rem; font-size: 1.45rem; }
-.project-showcase p:not(.eyebrow) { margin-bottom: 0; color: var(--muted); }
-
 .feature-row {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -632,10 +617,6 @@ h1 {
     min-height: auto;
   }
 
-  .project-showcase {
-    align-items: flex-start;
-    flex-direction: column;
-  }
 }
 
 @media (max-width: 640px) {
